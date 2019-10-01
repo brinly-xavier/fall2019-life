@@ -21,8 +21,40 @@ a. Not that I know of
 a. My partner in crime: Joely Fontana
 b. Stephen White
 c. Arshia Behzad
-d. https://stackoverflow.com/questions/2340281/check-if-a-string-contains-a-string-in-c
-e. http://www.cplusplus.com/doc/tutorial/exceptions/
+a. random function:
+http://www.cplusplus.com/reference/cstdlib/srand/
+
+b. shuffling the string:
+https://stackoverflow.com/questions/8364597/shuffling-string
+
+c. getting the absolute value
+http://www.cplusplus.com/reference/cmath/abs/
+
+d. seeing how the game functions
+https://bitstorm.org/gameoflife/
+
+e. pause between generations
+https://stackoverflow.com/questions/1658386/sleep-function-in-c/40783579
+
+f. enter for generations
+https://faq.cprogramming.com/cgi-bin/smartfaq.cgi?answer=1042856625&id=1043284385
+
+g. output file and appending to the file
+https://www.tutorialspoint.com/cplusplus/cpp_files_streams.htm
+
+h. how to make a string lower case
+https://www.geeksforgeeks.org/conversion-whole-string-uppercase-lowercase-using-stl-c/
+
+i. 2d dynamic array -
+https://stackoverflow.com/questions/936687/how-do-i-declare-a-2d-array-in-c-using-new
+
+j. try catch blocks -
+https://stackoverflow.com/questions/2718779/correct-exceptions-in-c
+https://stackoverflow.com/questions/36057028/throw-exception-if-the-file-does-not-exist-in-constructor-and-try-catch-it-when?rq=1
+
+k. how to check if a string has a character
+https://stackoverflow.com/questions/2340281/check-if-a-string-contains-a-string-in-c
+
 
 5. INSTRUCTIONS FOR RUNNING THE ASSIGNMENT
 a. download the repository from github
