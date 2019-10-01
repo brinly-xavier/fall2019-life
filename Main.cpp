@@ -19,7 +19,7 @@ using namespace std;
 using namespace std::this_thread;
 using namespace std::chrono;
 
-//golbalizing all of the variables
+//globalizing all of the variables
 bool loop = true;
 string input;
 string filename;
@@ -46,33 +46,100 @@ int main(int argc, char ** argv){
 //this takes an input
   if(input == "file"){
     cout<<"Enter the file name\n";
+    cout<<"if other is used then beware of what could happen"<<endl;
     cin>>filename;
-
   }
   //this takes the dimensions for the grid
-  if(input == "random"){
-    cout<<"Please input the height: "<<endl;
-    cin>>height;
-    cout<<"Please input the width: "<<endl;
-    cin>>width;
+
+  else if(input == "random"){
+    string rInp = "";
+    cout<<"Please input the height *integers only!* : "<<endl;
+    cin>>rInp;
+    try{
+      height = stoi(rInp);
+    }
+    catch (invalid_argument e)
+    {
+      cout <<"Please enter an integer next time. Thanks."<<endl;
+      return 1;
+    }
+    cout<<"Please input the width *integers only* : "<<endl;
+    cin>>rInp;
+    try{
+      width = stoi(rInp);
+    }
+    catch (invalid_argument e)
+    {
+      cout <<"Please enter an integer next time. Thanks."<<endl;
+      return 1;
+    }
     cout<<"Please enter population density that you would like to work with."<<endl;
     cout<<"Choose a number between 0 and 1"<<endl;
-    cin>>density;
+    cin>>rInp;
+    try{
+      density = stof(rInp);
+      if (density < 0 || density > 1){
+        throw runtime_error("The density was not in the proper boundaries");
+      }
+    }
+    catch (...)
+    {
+      cout <<"Please enter a proper number next time. Thanks."<<endl;
+      return 1;
+    }
   }
+  //anything else is straight up wrong
   else{
     cout<<"This is wrong...HERESEY"<<endl;
+    cout<<"GoodBye"<<endl;
     return 0;
   }
   //this takes an input on what mode the user wants to do
   cout<<"What method would you like to follow? 'classic', 'doughnut' or 'mirror'";
   cin>>mode;
   std::transform(mode.begin(), mode.end(), mode.begin(), ::tolower);
+  //this error checks to make sure that the user does not input something stupid
+  //pardon my french
+  bool forMode = false;
+  if(mode == "classic"){
+    forMode = true;
+  }
+  else if(mode == "doughnut"){
+    forMode = true;
+  }
+  else if(mode == "mirror"){
+    forMode = true;
+  }
+  if(forMode == false){
+    cout<<"The correct mode was not displayed"<<endl;
+    cout<<"Goodbye"<<endl;
+    return 1;
+  }
+
 //once printing out each generation the user has the option to print out to a file, pause or press enter to
 //move through generations
   cout<<"Would you like to pause between generations or output to a file? Enter 'map' 'pause' or 'enter'"<<endl;
   cin>>output;
   std::transform(output.begin(), output.end(), output.begin(), ::tolower);
 
+  //this error checks to make sure that the user does not input something stupid
+  //pardon my french
+
+  bool forOut = false;
+  if(output == "map"){
+    forOut = true;
+  }
+  else if(output == "pause"){
+    forOut = true;
+  }
+  else if(output == "enter"){
+    forOut = true;
+  }
+  if(forOut == false){
+    cout<<"The correct output was not entered!"<<endl;
+    cout<<"Goodbye"<<endl;
+    return 1;
+  }
    //make the grid
 //this pointer initializes the future gen grid based off of the parent grid
 Grid* currentGen;
@@ -88,7 +155,14 @@ else
 {
   //if the user chooses to use a file it takes the dimensions from the file
   //to make a parent board
-  currentGen = new Grid(filename, mode);
+  try{
+    currentGen = new Grid(filename, mode);
+  }
+  catch(runtime_error e){
+    cout<<"The program has ended. Come back soon"<<endl;
+    cout<<e.what()<<endl;
+    return 1;
+  }
   //this takes the dimensions from the file and sets them to the same format
   //the random function uses
   height = currentGen->x;

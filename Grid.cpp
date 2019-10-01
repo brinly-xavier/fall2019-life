@@ -20,6 +20,15 @@ void Grid::getFile(string filename){
   ifstream exboard;
   string line;
   exboard.open(filename);
+  if (exboard.is_open())
+  {
+  cout<< "File successfully open";
+  }
+  else
+  {
+    throw runtime_error("The file you entered could not be opened. Try again Later.");
+  }
+
   string sRow = "";
   string sColumn = "";
   cout<<"Opened file: "<<filename<<"\n";
