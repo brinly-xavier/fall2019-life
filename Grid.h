@@ -10,8 +10,9 @@ using namespace std;
 
 class Grid{
   public:
-    //constructor
+    //constructor for random grid
     Grid(int height, int width, float density, string mode);
+    //constructor for file grid
     Grid(string filename, string mode);
     //overloaded
     //destructor

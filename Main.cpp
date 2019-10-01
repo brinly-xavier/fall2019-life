@@ -54,8 +54,12 @@ int main(int argc, char ** argv){
   else if(input == "random"){
     string rInp = "";
     cout<<"Please input the height *integers only!* : "<<endl;
+    //the temp variable for the error check
     cin>>rInp;
+    //this error check makes sure that the user inputs only integers
     try{
+      //this sets the tep variable equal to the actual
+      //only if the height is right
       height = stoi(rInp);
     }
     catch (invalid_argument e)
@@ -65,6 +69,7 @@ int main(int argc, char ** argv){
     }
     cout<<"Please input the width *integers only* : "<<endl;
     cin>>rInp;
+    //this error check makes sure that the user inputs only integers
     try{
       width = stoi(rInp);
     }
@@ -78,10 +83,12 @@ int main(int argc, char ** argv){
     cin>>rInp;
     try{
       density = stof(rInp);
+      //this also checks if the density is in the right boundary
       if (density < 0 || density > 1){
         throw runtime_error("The density was not in the proper boundaries");
       }
     }
+    //this is catching two kinds of errors
     catch (...)
     {
       cout <<"Please enter a proper number next time. Thanks."<<endl;
@@ -98,9 +105,12 @@ int main(int argc, char ** argv){
   cout<<"What method would you like to follow? 'classic', 'doughnut' or 'mirror'";
   cin>>mode;
   std::transform(mode.begin(), mode.end(), mode.begin(), ::tolower);
-  //this error checks to make sure that the user does not input something stupid
+  //this error checks to make sure that the user does not input something "stupid"
   //pardon my french
+
   bool forMode = false;
+  //its a boolean so that it could run through everything and would interfere
+  // with other if/else statements
   if(mode == "classic"){
     forMode = true;
   }
@@ -122,8 +132,8 @@ int main(int argc, char ** argv){
   cin>>output;
   std::transform(output.begin(), output.end(), output.begin(), ::tolower);
 
-  //this error checks to make sure that the user does not input something stupid
-  //pardon my french
+  //once again this error checks to make sure that the user does not input something stupid
+  //also once again, pardon my french
 
   bool forOut = false;
   if(output == "map"){
@@ -240,6 +250,7 @@ else
 //this counts the different generations
     counter++;
   }
+  //end of the program
   cout<<"Game Over"<<endl;
   cout<<"Goodbye!"<<endl;
   return 0;
