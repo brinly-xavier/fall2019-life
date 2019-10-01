@@ -11,17 +11,23 @@ using namespace std;
 class Grid{
   public:
     //constructor
-    Grid(int height, int width);
+    Grid(int height, int width, float density, string mode);
+    Grid(string filename, string mode);
     //overloaded
-    Grid(int );//fix this
     //destructor
     ~Grid();
     void makeBoard();
+    void getFile(string filename);
+    void gridPop();
     string gridString();
+    int neighCount(int cow, int rolumn);
+    bool isReal(int z, int a);
+    string nextGen();
+    void nextGrid(string nextGen);
     //set the arrays and also the dimensions
-    char ** myArray;
+    char ** board;
     int x;
     int y;
-
-
-}
+    string mode;
+    float density;
+};
